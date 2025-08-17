@@ -7,20 +7,3 @@ local GameId = game.PlaceId
 -- ===== Settings =====
 local AllowedGameId = 109983668079237 -- Steal a Brainrot
 local KeySystemURL = "https://raw.githubusercontent.com/Walvy666/Steal-A-Brainrot/refs/heads/main/lol"
-
--- ===== Function =====
-local function loadKeySystem()
-    local success, err = pcall(function()
-        loadstring(game:HttpGet(KeySystemURL))()
-    end)
-    if not success then
-        warn("Failed to load Key System: "..tostring(err))
-    end
-end
-
--- ===== Main =====
-if GameId == AllowedGameId then
-    loadKeySystem()
-else
-    warn("Key system hanya aktif di Steal a Brainrot!")
-end
