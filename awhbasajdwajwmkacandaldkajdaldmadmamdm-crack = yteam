@@ -2,8 +2,25 @@
 local Players = game:GetService("Players")
 local HttpService = game:GetService("HttpService")
 local LocalPlayer = Players.LocalPlayer
-local GameId = game.PlaceId
 
 -- ===== Settings =====
 local AllowedGameId = 109983668079237 -- Steal a Brainrot
-local KeySystemURL = "https://raw.githubusercontent.com/Walvy666/Steal-A-Brainrot/refs/heads/main/lol"
+local ScriptURL = "https://raw.githubusercontent.com/Walvy666/Steal-A-Brainrot/refs/heads/main/lol"
+
+-- ===== Game Check =====
+if game.PlaceId ~= AllowedGameId then
+    warn("This script only works in Steal a Brainrot!")
+    return
+end
+
+-- ===== Load Script from URL =====
+local success, err = pcall(function()
+    local response = game:HttpGet(ScriptURL)
+    loadstring(response)()
+end)
+
+if not success then
+    warn("Failed to load script from URL:", err)
+else
+    print("Script successfully executed in Steal a Brainrot!")
+end
